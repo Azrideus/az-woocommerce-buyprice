@@ -1,12 +1,6 @@
 <?php
 
 /**
- * The plugin bootstrap file
- *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
  *
  * @link              URI
  * @since             1.0.0
@@ -32,15 +26,15 @@ if (!defined('WPINC')) {
 
 /**
  * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
  */
-define('AZWCBP_VERSION', '1.0.0');
+// define('AZWCBP_VERSION', '1.0.0');
 
+//use your own custom meta name here
+$azwcbp_metaname = '_amadeus_buyprice';
+
+/* ------------------------------- actual code ------------------------------ */
 add_filter('woocommerce_product_options_general_product_data', 'azwcbp_return_meta');
 add_filter('woocommerce_process_product_meta', 'azwcbp_process_product_meta');
-
-$azwcbp_metaname = '_amadeus_buyprice';
 
 function azwcbp_return_meta() {
     $args = array(
